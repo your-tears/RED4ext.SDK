@@ -26,6 +26,16 @@ namespace ent { struct ITransformBinding; }
 
 namespace ent
 {
+struct __declspec(align(0x10)) IPlacedComponent : ent::IComponent
+{
+    static constexpr const char* NAME = "entIPlacedComponent";
+    static constexpr const char* ALIAS = "IPlacedComponent";
+
+    Handle<ent::ITransformBinding> parentTransform; // 90
+    uint8_t unkA0[0xC0 - 0xA0]; // A0
+    WorldTransform localTransform; // C0
+    uint8_t unkE0[0x120 - 0xE0]; // E0
+};
 RED4EXT_ASSERT_SIZE(IPlacedComponent, 0x120);
 } // namespace ent
 using entIPlacedComponent = ent::IPlacedComponent;

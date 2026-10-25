@@ -7,13 +7,16 @@
 #include <cstdint>
 namespace RED4ext
 {
-namespace quest { 
-enum class Platform : uint32_t
+namespace quest {
+enum class Platform : int32_t
 {
     PC = 0,
     Console = 1,
     LastGenConsole = 2,
     CurrGenConsole = 3,
+    NintendoSwitch2 = 4,
+    XBoxSeriesS = 5,
+    SteamDeck = 6,
 };
 } // namespace quest
 using questPlatform = quest::Platform;

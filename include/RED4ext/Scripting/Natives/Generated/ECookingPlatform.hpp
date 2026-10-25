@@ -7,7 +7,7 @@
 #include <cstdint>
 namespace RED4ext
 {
-enum class ECookingPlatform : uint8_t
+enum class ECookingPlatform : int8_t
 {
     PLATFORM_None = 0,
     PLATFORM_PC = 1,
@@ -18,6 +18,8 @@ enum class ECookingPlatform : uint8_t
     PLATFORM_WindowsServer = 6,
     PLATFORM_LinuxServer = 7,
     PLATFORM_GGP = 8,
+    PLATFORM_Emporium = 9,
+    PLATFORM_Mac = 10,
 };
 } // namespace RED4ext
 

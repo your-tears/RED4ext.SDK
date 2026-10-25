@@ -199,44 +199,24 @@ struct BaseObject : game::Object
     uint32_t physicsState;         // 260
     float acceleration;            // 264
     float deceleration;            // 268
-    float handbrake;               // 26C
-    float strafeY;                 // 270
-    float strafeX;                 // 274
-    float turnInput;               // 278
-    float leanFB;                  // 27C
-    float rockFB;                  // 280
-    uint8_t unk26C[0x2A3 - 0x284]; // 284
-    bool isReversing;              // 2A3
-    uint8_t unk2A4[0x2BC - 0x2A4]; // 2A4
-    float burnout;                 // 2BC
-    uint8_t unk2C0[0x2C8 - 0x2C0]; // 2C0
-    SuspensionBase * suspension;   // 2C8
-    RigidBody * rigidBody;         // 2D0
-
-    Handle<ISerializable> curveSetData;  // 2D8
-    Handle<ISerializable> chassis;   // 2E8
-    float unk2F8[16]; // 2F8
-    uint64_t chassisType; // 338
-    WorldTransform worldTransform; // 340
-
-    uint8_t unk360[0x3A0 - 0x360]; // 360
-    Ref<AI::Archetype> archetype;  // 3A0
-
-    uint8_t unk3B8[0x5D0 - 0x3B8]; // 3B8
-    RuntimeData *runtimeData;      // 5D0
-    uint8_t unk5D8[0x6D2 - 0x5D8]; // 5D8
-
-    bool isVehicleOnStateLocked;   // 6D2
-    uint8_t unk6D3[0xB90 - 0x6D3]; // 6D3
+    uint8_t unk26C[0x2AB - 0x26C]; // 26C
+    bool isReversing;              // 2AB
+    uint8_t unk2AC[0x2C4 - 0x2AC]; // 2AC
+    float burnout;                 // 2C4
+    uint8_t unk2C8[0x3B0 - 0x2C8]; // 2C8
+    Ref<AI::Archetype> archetype;  // 3B0
+    uint8_t unk3C8[0x6F2 - 0x3C8]; // 3C8
+    bool isVehicleOnStateLocked;   // 6F2
+    uint8_t unk6F3[0xBC0 - 0x6F3]; // 6F3
 };
-RED4EXT_ASSERT_SIZE(BaseObject, 0xB90);
+RED4EXT_ASSERT_SIZE(BaseObject, 0xBC0);
 RED4EXT_ASSERT_OFFSET(BaseObject, isOnGround, 0x25C);
 RED4EXT_ASSERT_OFFSET(BaseObject, acceleration, 0x264);
 RED4EXT_ASSERT_OFFSET(BaseObject, deceleration, 0x268);
-RED4EXT_ASSERT_OFFSET(BaseObject, isReversing, 0x2A3);
-RED4EXT_ASSERT_OFFSET(BaseObject, burnout, 0x2BC);
-RED4EXT_ASSERT_OFFSET(BaseObject, archetype, 0x3A0);
-RED4EXT_ASSERT_OFFSET(BaseObject, isVehicleOnStateLocked, 0x6D2);
+RED4EXT_ASSERT_OFFSET(BaseObject, isReversing, 0x2AB);
+RED4EXT_ASSERT_OFFSET(BaseObject, burnout, 0x2C4);
+RED4EXT_ASSERT_OFFSET(BaseObject, archetype, 0x3B0);
+RED4EXT_ASSERT_OFFSET(BaseObject, isVehicleOnStateLocked, 0x6F2);
 } // namespace vehicle
 using vehicleBaseObject = vehicle::BaseObject;
 using VehicleObject = vehicle::BaseObject;

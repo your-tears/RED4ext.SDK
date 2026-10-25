@@ -16,7 +16,7 @@ using entEntityTemplate = ent::EntityTemplate;
 #include <cstdint>
 #include <RED4ext/Common.hpp>
 #include <RED4ext/CName.hpp>
-#include <RED4ext/DynArray.hpp>
+#include <RED4ext/Containers/DynArray.hpp>
 #include <RED4ext/Handle.hpp>
 #include <RED4ext/NativeTypes.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ent/TemplateAppearance.hpp>
@@ -61,5 +61,6 @@ RED4EXT_ASSERT_SIZE(EntityTemplate, 0x2B0);
 } // namespace ent
 using entEntityTemplate = ent::EntityTemplate;
 } // namespace RED4ext
+*/
 
 // clang-format on

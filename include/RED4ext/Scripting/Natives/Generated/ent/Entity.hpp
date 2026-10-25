@@ -11,9 +11,10 @@ namespace RED4ext
 RED4EXT_ASSERT_SIZE(ent::Entity, 0x160);
 using entEntity = ent::Entity;
 using Entity = ent::Entity;
-}
+} // namespace RED4ext
 
-/*#include <cstdint>
+/*
+#include <cstdint>
 #include <RED4ext/Common.hpp>
 #include <RED4ext/Scripting/IScriptable.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ECustomCameraTarget.hpp>

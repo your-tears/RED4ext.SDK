@@ -3,7 +3,8 @@
 #endif
 
 #include <RED4ext/CName.hpp>
-#include <RED4ext/DynArray.hpp>
+#include <RED4ext/Containers/DynArray.hpp>
+#include <RED4ext/Containers/StaticArray.hpp>
 #include <RED4ext/GameEngine.hpp>
 #include <RED4ext/Handle.hpp>
 #include <RED4ext/ISerializable.hpp>
@@ -181,6 +182,8 @@
 #include <RED4ext/Scripting/Natives/Generated/DynamicTextureDataFormat.hpp>
 #include <RED4ext/Scripting/Natives/Generated/EAIAttitude.hpp>
 #include <RED4ext/Scripting/Natives/Generated/EAreaLightShape.hpp>
+#include <RED4ext/Scripting/Natives/Generated/EAstcQuality.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ECameraRenderingQuality.hpp>
 #include <RED4ext/Scripting/Natives/Generated/EColorMappingFunction.hpp>
 #include <RED4ext/Scripting/Natives/Generated/EComparisonType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ECookingPlatform.hpp>
@@ -194,6 +197,7 @@
 #include <RED4ext/Scripting/Natives/Generated/EEnvColorGroup.hpp>
 #include <RED4ext/Scripting/Natives/Generated/EEnvManagerModifier.hpp>
 #include <RED4ext/Scripting/Natives/Generated/EFreeVectorAxes.hpp>
+#include <RED4ext/Scripting/Natives/Generated/EInputAction.hpp>
 #include <RED4ext/Scripting/Natives/Generated/EInputKey.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ELightShadowSoftnessMode.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ELightType.hpp>
@@ -251,15 +255,15 @@
 #include <RED4ext/Scripting/Natives/Generated/GeometryShapeFace.hpp>
 #include <RED4ext/Scripting/Natives/Generated/GlobalLightingTrajectory.hpp>
 #include <RED4ext/Scripting/Natives/Generated/GlobalLightingTrajectoryOverride.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApiVertexLayoutDesc.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApiVertexPackingEStreamType.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApiVertexPackingPackingElement.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApiVertexPackingePackingType.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApiVertexPackingePackingUsage.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApieIndexBufferChunkType.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApieTextureFormat.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApieTextureGroup.hpp>
-#include <RED4ext/Scripting/Natives/Generated/GpuWrapApieTextureType.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/VertexLayoutDesc.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/VertexPacking/EStreamType.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/VertexPacking/PackingElement.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/VertexPacking/ePackingType.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/VertexPacking/ePackingUsage.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/eIndexBufferChunkType.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/eTextureFormat.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/eTextureGroup.hpp>
+#include <RED4ext/Scripting/Natives/Generated/GpuWrapApi/eTextureType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/HDRColor.hpp>
 #include <RED4ext/Scripting/Natives/Generated/IAreaSettings.hpp>
 #include <RED4ext/Scripting/Natives/Generated/IBackendData.hpp>
@@ -384,6 +388,7 @@
 #include <RED4ext/Scripting/Natives/Generated/WorldRenderAreaSettings.hpp>
 #include <RED4ext/Scripting/Natives/Generated/WorldShadowConfig.hpp>
 #include <RED4ext/Scripting/Natives/Generated/WorldTransform.hpp>
+#include <RED4ext/Scripting/Natives/Generated/WorldWidgetComponent.hpp>
 #include <RED4ext/Scripting/Natives/Generated/anim/ActionAnimDatabase_AnimationData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/anim/ActionAnimDatabase_DatabaseRow.hpp>
 #include <RED4ext/Scripting/Natives/Generated/anim/AdditionalFloatTrackContainer.hpp>
@@ -961,6 +966,9 @@
 #include <RED4ext/Scripting/Natives/Generated/game/BodyTypeData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/BoolSignalAction.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/BreachUITrackingChange.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/BufferSlice.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/CallbackSystemEvent.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/CallbackSystemTarget.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/CameraComponent.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/CategorySelectionProbability.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/CityAreaType.hpp>
@@ -1353,6 +1361,7 @@
 #include <RED4ext/Scripting/Natives/Generated/game/SSlotVisualInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/SaveLockReason.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/SavedStatsData.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/SavedStatsDataOptimized.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ScanningEvent.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ScanningMode.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ScanningState.hpp>
@@ -1496,7 +1505,9 @@
 #include <RED4ext/Scripting/Natives/Generated/game/data/BaseObject_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/BaseSign_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/Base_MappinDefinition_Record.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/data/CharacterRandomizationCategory.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/Character_Record.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/data/CheckpointAngleRange_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/ChoiceCaptionPart_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/CompanionDistancePreset.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/ConstantStatModifier_Record.hpp>
@@ -1516,11 +1527,14 @@
 #include <RED4ext/Scripting/Natives/Generated/game/data/EquipmentArea.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/EquipmentArea_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/Gadget_Record.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/data/GlamdocThreshold_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/GrenadeDeliveryMethodType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/GrenadeDeliveryMethod_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/GroupNodeGroupVariable.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/GroupNodeGroupVariableDeriveInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/GroupNodeInheritanceState.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/data/GyroConfigurationParams_Record.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/data/GyroProcessedAxis_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/IPrereq_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/InteractionBase_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/ItemAction_Record.hpp>
@@ -1589,6 +1603,7 @@
 #include <RED4ext/Scripting/Natives/Generated/game/data/VehicleType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/VehicleWheelDrivingSetup_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/VendorWare_Record.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/data/Vendor_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/WeaponEvolution.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/WeaponItem_Record.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/data/WidgetDefinition_Record.hpp>
@@ -1733,6 +1748,7 @@
 #include <RED4ext/Scripting/Natives/Generated/game/targeting/SystemTargetFilter.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/targeting/SystemTargetFilterResult.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/targeting/SystemTargetFilter_Closest.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/AllLanguagesCheckboxCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/AuthorisationNotificationType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/BaseDirectionalIndicatorPartLogicController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/BaseGarmentItemPreviewGameController.hpp>
@@ -1744,6 +1760,7 @@
 #include <RED4ext/Scripting/Natives/Generated/game/ui/BaseUIData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/BaseWorldMapMappinController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CensorshipInfo.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/ChangeAspectRatioCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CharacterCustomizationAction.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CharacterCustomizationActionType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CharacterCustomizationAttribute.hpp>
@@ -1760,6 +1777,7 @@
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CharacterCustomizationUiPresetValue.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CharacterCustomizationVersionUpdateInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CharacterCustomization_BrokenNoseStage.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/CharacterRandomizationInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/ChoiceListVisualizerType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/Context.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/CrosshairBaseGameController.hpp>
@@ -1778,6 +1796,7 @@
 #include <RED4ext/Scripting/Natives/Generated/game/ui/EWorldMapDistrictView.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/EntityPreviewCameraSettings.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/ExternalPhoneElement.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/FilterTagsReceivedCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/ForcePlayerCustomizationData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/GameStatePropertyChangedCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/GarmentSwitchEffectController.hpp>
@@ -1809,16 +1828,21 @@
 #include <RED4ext/Scripting/Natives/Generated/game/ui/InteractionMappinController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/InventoryPuppetPreviewGameController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/KillInfo.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/LoadUISendModInfoToUpdateCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/LocalPhoneElement.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MappinBaseController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MappinControllerCustomData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MappinGroupState.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MappinsContainerController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MenuGameController.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/MenuIntCallback.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/MenuIntIntCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MenuItemListGameController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MinigameGenerationRule.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MinigameState.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/MinimapContainerController.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/ModLogoInfoReceivedCallback.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/NpcImageCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/OnscreenVOPlayerController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/OptionsGroup.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/PanzerBonus.hpp>
@@ -1835,6 +1859,8 @@
 #include <RED4ext/Scripting/Natives/Generated/game/ui/PuppetPreviewCameraSetup.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/PuppetPreviewGameController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/QuestUpdateNotificationViewData.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/ReceivedHiddenModsListCallback.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/RequestMediaForWidgetCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/ResolutionSensitiveWidget.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/RoachRaceChunk.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/RoachRaceChunkLayer.hpp>
@@ -1843,6 +1869,11 @@
 #include <RED4ext/Scripting/Natives/Generated/game/ui/RoadEditorObstacleSettings.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/RoadEditorSegment.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/SaveHandlingController.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/SendModGridInfoCallback.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/SendModInfoToUpdateCallback.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/SendModUpdateVerificationInfo.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/SendProcessedModProgressInfoCallback.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/SendSelectedModInfoCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/SetPhotoModeKeyEnabledCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/SideScrollerCheatCode.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/SideScrollerMiniGameControllerAdvanced.hpp>
@@ -1858,6 +1889,7 @@
 #include <RED4ext/Scripting/Natives/Generated/game/ui/StickerImageCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/SwitchPair.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/SwitcherOption.hpp>
+#include <RED4ext/Scripting/Natives/Generated/game/ui/UpdatePageLayoutCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/VOWithDelay.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/WidgetGameController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/ui/arcade/ArcadeBackgroundController.hpp>
@@ -1933,6 +1965,7 @@
 #include <RED4ext/Scripting/Natives/Generated/ink/BaseVariantDataSource.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/BaseWeakScriptableDataSource.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/BinkLanguageDescriptor.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/BoolCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/BrushMirrorType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/BrushTileType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/ButtonClickCallback.hpp>
@@ -1961,6 +1994,7 @@
 #include <RED4ext/Scripting/Natives/Generated/ink/DebugLayerDefinition.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/DebugLayerEntry.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/DeleteRequestResult.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/DeleteScreenshotResult.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/DiscreteNavigationController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/DiscreteNavigationDirection.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/DisplayMode.hpp>
@@ -1984,14 +2018,19 @@
 #include <RED4ext/Scripting/Natives/Generated/ink/EffectType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/EmptyCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/Event.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/FavoriteLoadResult.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/FinalConfigurationVisibility.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/FitToContentDirection.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/FocusEvent.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/FontStyle.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/FullScreenLayer.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/GalleryData.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/GameNotificationData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/GameNotificationsLayerDefinition.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/GameScreenshotsRequestResult.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/GenericSystemNotificationLogicController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/GlitchEffect.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/GogSignInCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/GradientMode.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/GridItem.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/GridItemTemplate.hpp>
@@ -2060,6 +2099,10 @@
 #include <RED4ext/Scripting/Natives/Generated/ink/MenuInstance.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/MenuInstance_SpawnEvent.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/MenuLayerDefinition.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/ModioModInfos.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/ModioModProgressState.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/ModioModState.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/ModioRating.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/NavigationOverrideEntry.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/OffscreenLayerDefinition.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/OnGogLoginStatusChangedResult.hpp>
@@ -2094,6 +2137,7 @@
 #include <RED4ext/Scripting/Natives/Generated/ink/SystemNotificationsLayerDefinition.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/SystemRequesResult.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/SystemServerRequesResult.hpp>
+#include <RED4ext/Scripting/Natives/Generated/ink/TelemetryDataRemovalCallback.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/TextAnimationController.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/TextReplaceAnimationControllerWidgetTextUsage.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ink/TextWidget.hpp>
@@ -2580,6 +2624,7 @@
 #include <RED4ext/Scripting/Natives/Generated/res/StreamedResource.hpp>
 #include <RED4ext/Scripting/Natives/Generated/save/GameMetadata.hpp>
 #include <RED4ext/Scripting/Natives/Generated/save/Metadata.hpp>
+#include <RED4ext/Scripting/Natives/Generated/save/ModioModSavedInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/scn/AICommandFactory.hpp>
 #include <RED4ext/Scripting/Natives/Generated/scn/ActorDef.hpp>
 #include <RED4ext/Scripting/Natives/Generated/scn/ActorId.hpp>
@@ -2857,6 +2902,10 @@
 #include <RED4ext/Scripting/Natives/Generated/vehicle/CameraManager.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/CameraPerspective.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/CarBaseObject.hpp>
+#include <RED4ext/Scripting/Natives/Generated/vehicle/CinematicCameraShot.hpp>
+#include <RED4ext/Scripting/Natives/Generated/vehicle/CinematicCameraShotEffect.hpp>
+#include <RED4ext/Scripting/Natives/Generated/vehicle/CinematicCameraShotGroup.hpp>
+#include <RED4ext/Scripting/Natives/Generated/vehicle/CinematicCameraShotStopCondition.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/DestructionPSData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/DisabledReason.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/ELightMode.hpp>
@@ -2877,7 +2926,10 @@
 #include <RED4ext/Scripting/Natives/Generated/vehicle/PlayerToAIInterpolationType.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/PoliceStrategy.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/SummonState.hpp>
+#include <RED4ext/Scripting/Natives/Generated/vehicle/TimedCinematicCameraShotEffect.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/UnlockedVehicle.hpp>
+#include <RED4ext/Scripting/Natives/Generated/vehicle/VehicleAppearanceToDecalsName.hpp>
+#include <RED4ext/Scripting/Natives/Generated/vehicle/VehicleClearCoatOverrides.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/VehicleDoorInteractionState.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/VehicleDoorState.hpp>
 #include <RED4ext/Scripting/Natives/Generated/vehicle/VehicleNetrunnerQuickhackType.hpp>
@@ -2938,6 +2990,12 @@
 #include <RED4ext/Scripting/Natives/Generated/world/CompiledEffectInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/CompiledEffectPlacementInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/CompiledNodeInstanceSetupInfo.hpp>
+#include <RED4ext/Scripting/Natives/Generated/world/CookedBendedMeshNode.hpp>
+#include <RED4ext/Scripting/Natives/Generated/world/CookedCollisionNode.hpp>
+#include <RED4ext/Scripting/Natives/Generated/world/CookedEntityProxyMeshNode.hpp>
+#include <RED4ext/Scripting/Natives/Generated/world/CookedMeshNode.hpp>
+#include <RED4ext/Scripting/Natives/Generated/world/CookedNode.hpp>
+#include <RED4ext/Scripting/Natives/Generated/world/CookedPrefabProxyMeshNode.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/CrowdNullAreaCollisionData.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/CrowdNullAreaCollisionHeader.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/DbgOverlapBox.hpp>
@@ -3029,7 +3087,6 @@
 #include <RED4ext/Scripting/Natives/Generated/world/RainIntensity.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/RelativeNodePath.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/RelativeNodePathElement.hpp>
-#include <RED4ext/Scripting/Natives/Generated/world/RenderProxyTransformBuffer.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/RoadMaterial.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/RoadMaterialInfo.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/RotatingMeshNodeAxis.hpp>
@@ -3076,7 +3133,6 @@
 #include <RED4ext/Scripting/Natives/Generated/world/TrafficSpotDefinition.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/TrafficSpotDirection.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/TrafficStaticCollisionSphere.hpp>
-#include <RED4ext/Scripting/Natives/Generated/world/TransformBuffer.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/TriggerAreaNode.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/TriggerAreaNodeInstance.hpp>
 #include <RED4ext/Scripting/Natives/Generated/world/WaterPatchNodeType.hpp>

@@ -7,8 +7,8 @@
 #include <cstdint>
 namespace RED4ext
 {
-namespace game::data { 
-enum class MappinVariant : uint32_t
+namespace game::data {
+enum class MappinVariant : int32_t
 {
     ActionDealDamageVariant = 0,
     ActionFastSoloVariant = 1,
@@ -151,12 +151,16 @@ enum class MappinVariant : uint32_t
     Zzz16_RelicDeviceSpecialVariant = 138,
     Zzz17_NCARTVariant = 139,
     Zzz18_RacingVariant = 140,
-    CPO_PingDoorVariant = 141,
-    CPO_PingGoHereVariant = 142,
-    CPO_PingLootVariant = 143,
-    CPO_RemotePlayerVariant = 144,
-    Count = 145,
-    Invalid = 146,
+    Zzz19_DelamainTaxiVariant = 141,
+    Zzz20_DelamainTaxiDestinationVariant = 142,
+    Zzz21_ServicePointGlamdocVariant = 143,
+    Zzz22_CityTourLandmark = 144,
+    CPO_PingDoorVariant = 145,
+    CPO_PingGoHereVariant = 146,
+    CPO_PingLootVariant = 147,
+    CPO_RemotePlayerVariant = 148,
+    Count = 149,
+    Invalid = 150,
 };
 } // namespace game::data
 using gamedataMappinVariant = game::data::MappinVariant;
